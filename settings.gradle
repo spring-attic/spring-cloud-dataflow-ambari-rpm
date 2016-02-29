@@ -1,0 +1,4 @@
+rootProject.name = 'scdf-plugin'
+
+include 'hdp'
+include 'phd'

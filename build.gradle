@@ -1,0 +1,82 @@
+buildscript {
+	repositories {
+		jcenter()
+	}
+
+	dependencies {
+		classpath 'com.netflix.nebula:gradle-ospackage-plugin:3.4.0'
+	}
+}
+
+if (tasks.findByPath("artifactoryPublish")) {
+	artifactory {
+		publish {
+			repository {
+				ivy {
+					artifactLayout = '[organization]/[revision]/[organization]-plugin-[module]-[revision]-[classifier].[ext]'
+				}
+			}
+		}
+	}
+}
+
+configure(allprojects) {
+	group = 'scdf'
+}
+
+import org.apache.tools.ant.filters.ReplaceTokens
+
+configure(subprojects) { subproject ->
+	apply plugin: 'nebula.ospackage'
+	buildDeb.enabled = false
+
+	task filterRpm(type: Copy) {
+		from "${rootProject.projectDir}/src/main/package/rpm"
+		into "$buildDir/rpm-filtered"
+		filter ReplaceTokens, tokens: [
+			springYumRepoId: "${rootProject.springYumRepoId}".toString()
+		]
+	}
+
+	ospackage {
+		release = "${rootProject.release}"
+		arch = NOARCH
+		os = LINUX
+		user 'root'
+		permissionGroup = 'root'
+		packageDescription = 'Spring Cloud Dataflow plugin contains Ambari\'s stack definition for Spring Cloud Dataflow service.'
+		packageGroup = 'Applications/Databases'
+		license = 'Apache License v2.0'
+		requires('ambari-server', '1.7', GREATER | EQUAL)
+		requires('python', '2.6', GREATER | EQUAL)
+		postInstall file("$buildDir/rpm-filtered/postinstall.sh")
+		preUninstall file("$buildDir/rpm-filtered/preremove.sh")
+	}
+
+	buildRpm.dependsOn filterRpm
+
+	artifacts {
+		archives buildRpm {
+			classifier "${rootProject.release}.noarch"
+		}
+	}
+}
+
+project('hdp') {
+	buildRpm {
+		packageName = 'scdf-plugin-hdp'
+		from("${rootProject.projectDir}/src/main/resources/services") {
+			into '/var/lib/ambari-server/resources/stacks/HDP/2.2/services'
+		}
+	}
+}
+
+project('phd') {
+	buildRpm {
+		packageName = 'scdf-plugin-phd'
+		from("${rootProject.projectDir}/src/main/resources/services") {
+			into '/var/lib/ambari-server/resources/stacks/PHD/3.0/services'
+		}
+	}
+}
+

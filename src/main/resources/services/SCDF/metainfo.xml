@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+
+<metainfo>
+  <schemaVersion>2.0</schemaVersion>
+  <services>
+    <service>
+      <name>SCDF</name>
+      <displayName>Spring Cloud Dataflow</displayName>
+      <comment>Spring Cloud Dataflow is a unified, distributed, and extensible system for data ingestion, real time analytics, batch processing, and data export.</comment>
+      <version>1.0</version>
+      <components>
+
+        <component>
+          <name>SCDFSERVER</name>
+          <displayName>SCDF Server</displayName>
+          <category>MASTER</category>
+          <cardinality>1+</cardinality>
+          <commandScript>
+            <script>scripts/scdf_server.py</script>
+            <scriptType>PYTHON</scriptType>
+            <timeout>600</timeout>
+          </commandScript>
+          <dependencies>
+            <dependency>
+              <name>YARN/YARN_CLIENT</name>
+              <scope>host</scope>
+              <auto-deploy>
+                <enabled>true</enabled>
+              </auto-deploy>
+            </dependency>
+          </dependencies>
+        </component>
+
+        <component>
+          <name>SCDFSHELL</name>
+          <displayName>SCDF Shell</displayName>
+          <category>CLIENT</category>
+          <cardinality>1+</cardinality>
+          <commandScript>
+            <script>scripts/scdf_shell.py</script>
+            <scriptType>PYTHON</scriptType>
+            <timeout>600</timeout>
+          </commandScript>
+        </component>
+
+        <component>
+          <name>SCDFH2</name>
+          <displayName>SCDF H2 Database</displayName>
+          <category>MASTER</category>
+          <cardinality>0+</cardinality>
+          <commandScript>
+            <script>scripts/scdf_h2.py</script>
+            <scriptType>PYTHON</scriptType>
+            <timeout>600</timeout>
+          </commandScript>
+        </component>
+
+      </components>
+
+      <requiredServices>
+          <service>YARN</service>
+      </requiredServices>
+
+      <configuration-dependencies>
+        <config-type>scdf-site</config-type>
+        <config-type>scdf-server-env</config-type>
+      </configuration-dependencies>
+
+      <osSpecifics>
+        <osSpecific>
+          <osFamily>any</osFamily>
+           <packages>
+            <package>
+              <name>spring-cloud-dataflow-server-yarn</name>
+            </package>
+          </packages>
+        </osSpecific>
+      </osSpecifics>
+
+    </service>
+
+  </services>
+</metainfo>
+

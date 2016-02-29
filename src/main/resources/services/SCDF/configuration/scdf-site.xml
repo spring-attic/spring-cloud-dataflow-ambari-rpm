@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+<configuration supports_final="true">
+
+<!--
+  <property>
+    <name>xd.transport</name>
+    <value> </value>
+    <description>XD messagebus</description>
+  </property>
+
+  <property>
+    <name>xd.customModule.home</name>
+    <value>${spring.hadoop.fsUri}/xd/custom-modules</value>
+    <description>XD module home path in hdfs</description>
+  </property>
+-->
+
+  <property>
+    <name>spring.redis.host</name>
+    <value> </value>
+    <description>Redis address hostname</description>
+  </property>
+
+  <property>
+    <name>spring.redis.port</name>
+    <value>6379</value>
+    <description>Redis address port</description>
+  </property>
+
+<!--
+  <property>
+    <name>xd.messagebus.kafka.brokers</name>
+    <value> </value>
+    <description>Kafka brokers addresses</description>
+  </property>
+
+  <property>
+    <name>xd.messagebus.kafka.zkAddress</name>
+    <value> </value>
+    <description>Kafka zookeeper addresses</description>
+  </property>
+
+  <property>
+    <name>zk.client.connect</name>
+    <value> </value>
+    <description>XD zookeeper addresses</description>
+  </property>
+
+  <property>
+    <name>spring.rabbitmq.addresses</name>
+    <value> </value>
+    <description>Rabbit MQ addresses</description>
+  </property>
+-->
+
+  <property>
+    <name>dataflow.server.port</name>
+    <value>9393</value>
+    <description>SCDF Server port</description>
+  </property>
+
+  <property>
+    <name>h2.server.port</name>
+    <value>19092</value>
+    <description>HSQL server port</description>
+  </property>
+
+</configuration>
