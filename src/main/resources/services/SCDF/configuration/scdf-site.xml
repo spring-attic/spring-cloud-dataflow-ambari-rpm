@@ -3,19 +3,29 @@
 
 <configuration supports_final="true">
 
-<!--
   <property>
-    <name>xd.transport</name>
+    <name>dataflow.transport</name>
     <value> </value>
-    <description>XD messagebus</description>
+    <description>Binder framework</description>
   </property>
 
   <property>
-    <name>xd.customModule.home</name>
-    <value>${spring.hadoop.fsUri}/xd/custom-modules</value>
-    <description>XD module home path in hdfs</description>
+    <name>spring.cloud.stream.kafka.binder.brokers</name>
+    <value> </value>
+    <description>A list of brokers to which the Kafka binder will connect.</description>
   </property>
--->
+
+  <property>
+    <name>spring.cloud.stream.kafka.binder.zkNodes</name>
+    <value> </value>
+    <description>A list of ZooKeeper nodes to which the Kafka binder can connect.</description>
+  </property>
+
+  <property>
+    <name>spring.rabbitmq.addresses</name>
+    <value> </value>
+    <description>Rabbit MQ addresses</description>
+  </property>
 
   <property>
     <name>spring.redis.host</name>
@@ -28,32 +38,6 @@
     <value>6379</value>
     <description>Redis address port</description>
   </property>
-
-<!--
-  <property>
-    <name>xd.messagebus.kafka.brokers</name>
-    <value> </value>
-    <description>Kafka brokers addresses</description>
-  </property>
-
-  <property>
-    <name>xd.messagebus.kafka.zkAddress</name>
-    <value> </value>
-    <description>Kafka zookeeper addresses</description>
-  </property>
-
-  <property>
-    <name>zk.client.connect</name>
-    <value> </value>
-    <description>XD zookeeper addresses</description>
-  </property>
-
-  <property>
-    <name>spring.rabbitmq.addresses</name>
-    <value> </value>
-    <description>Rabbit MQ addresses</description>
-  </property>
--->
 
   <property>
     <name>dataflow.server.port</name>

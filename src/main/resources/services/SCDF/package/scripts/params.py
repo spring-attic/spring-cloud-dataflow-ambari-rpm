@@ -39,17 +39,15 @@ data_dir = status_params.data_dir
 java64_home = config['hostLevelParams']['java_home']
 jps_binary = format("{java64_home}/bin/jps")
 
-# xd configs
-#xd_transport = config['configurations']['springxd-site']['xd.transport'].strip()
-#xd_custommodule_home = config['configurations']['springxd-site']['xd.customModule.home'].strip()
+# scdf configs
+dataflow_transport = config['configurations']['scdf-site']['dataflow.transport'].strip()
 h2_port = config['configurations']['scdf-site']['h2.server.port']
 server_port = config['configurations']['scdf-site']['dataflow.server.port']
 spring_redis_port = config['configurations']['scdf-site']['spring.redis.port']
 spring_redis_host = config['configurations']['scdf-site']['spring.redis.host'].strip()
-#xd_messagebus_kafka_brokers = config['configurations']['springxd-site']['xd.messagebus.kafka.brokers'].strip()
-#xd_messagebus_kafka_zkAddress = config['configurations']['springxd-site']['xd.messagebus.kafka.zkAddress'].strip()
-#zk_client_connect = config['configurations']['springxd-site']['zk.client.connect'].strip()
-#spring_rabbitmq_addresses = config['configurations']['springxd-site']['spring.rabbitmq.addresses'].strip()
+spring_cloud_stream_kafka_binder_brokers = config['configurations']['scdf-site']['spring.cloud.stream.kafka.binder.brokers'].strip()
+spring_cloud_stream_kafka_binder_zknodes = config['configurations']['scdf-site']['spring.cloud.stream.kafka.binder.zkNodes'].strip()
+spring_rabbitmq_addresses = config['configurations']['scdf-site']['spring.rabbitmq.addresses'].strip()
 
 if stack_name == 'phd':
   hadoop_distro = "phd30"
@@ -58,9 +56,8 @@ elif stack_name == 'hdp':
 else:
   hadoop_distro = None
 
-# xd env configs
+# scdf env configs
 scdf_server_env_sh_template = config['configurations']['scdf-server-env']['content']
-#springxd_container_env_sh_template = config['configurations']['springxd-container-env']['content']
 scdf_user = config['configurations']['scdf-server-env']['scdf_user']
 scdf_hdfs_user_dir = format("/user/{scdf_user}")
 
@@ -147,36 +144,30 @@ if 'scdfserver_hosts' in config['clusterHostInfo'] and \
 else:
   scdf_server_installed = False
 
-redis_installed = False
 rabbitmq_installed = False
 
-# tweak actual message bus settings
+if len(spring_redis_host)>0:
+  redis_installed = True
+else:
+  redis_installed = False
+
+# tweak actual binder settings
 # we default to kafka if its installed and transport is not set
-#if len(xd_messagebus_kafka_brokers)>0:
-#  xd_transport = "kafka"
-#elif len(xd_transport)<1 and kafka_installed:
-#  xd_transport = "kafka"
-#  xd_messagebus_kafka_brokers = kafka_broker_connect
-#elif xd_transport == "kafka" and len(xd_messagebus_kafka_brokers)<1 and kafka_installed:
-#  xd_messagebus_kafka_brokers = kafka_broker_connect
-#elif len(spring_rabbitmq_addresses)>1:
-#  rabbitmq_installed = True
-#else:
-#  xd_transport = "redis"
-#  redis_installed = True
+if len(spring_cloud_stream_kafka_binder_brokers)>0:
+  dataflow_transport = "kafka"
+elif len(dataflow_transport)<1 and kafka_installed:
+  dataflow_transport = "kafka"
+  spring_cloud_stream_kafka_binder_brokers = kafka_broker_connect
+elif dataflow_transport == "kafka" and len(spring_cloud_stream_kafka_binder_brokers)<1 and kafka_installed:
+  spring_cloud_stream_kafka_binder_brokers = kafka_broker_connect
+elif len(spring_rabbitmq_addresses)>1:
+  rabbitmq_installed = True
 
-#if len(xd_messagebus_kafka_zkAddress)>0:
-#  zk_kafka_connect = xd_messagebus_kafka_zkAddress
+# kafka zk settings
+if len(spring_cloud_stream_kafka_binder_zknodes)<1 and zk_installed:
+  spring_cloud_stream_kafka_binder_zknodes = zk_connect
 
-# tweak zk settings for xd
-#if len(zk_client_connect)<1 and zk_installed:
-#  zk_client_connect = zk_connect
-
-# tweak zk settings for kafka bus
-#if len(xd_messagebus_kafka_zkAddress)<1 and kafka_installed:
-#  zk_kafka_connect = zk_connect
-
-# for xd shell
+# for dataflow shell
 scdf_shell_hdfs_address = fs_defaultfs
 scdf_shell_server_address = format("http://{scdf_server}:{server_port}")
 

@@ -49,17 +49,37 @@ spring:
    virtual_host: /
    useSSL: false
    sslProperties:
-
 {% endif %}
 
+{% if kafka_installed %}
 ---
+spring:
+  cloud:
+    stream:
+      kafka:
+        binder:
+          brokers: {{spring_cloud_stream_kafka_binder_brokers}}
+          zkNodes: {{spring_cloud_stream_kafka_binder_zknodes}}
+{% endif %}
+
 {% if h2_installed %}
+---
 spring:
   datasource:
     url: jdbc:h2:tcp://{{h2_server}}:{{h2_port}}/dataflow
     username: sa
     password:
     driverClassName: org.h2.Driver
+{% endif %}
+
+{% if dataflow_transport %}
+---
+spring:
+  cloud:
+    dataflow:
+      registry:
+        populator:
+          locations: classpath:{{dataflow_transport}}-applications.properties
 {% endif %}
 
 ---
