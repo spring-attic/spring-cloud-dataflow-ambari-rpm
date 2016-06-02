@@ -12,7 +12,7 @@ def updateRepoWithScdf(repoinfoxml):
   root = tree.getroot()
 
   for os_tag in root.findall('.//os'):
-    if ('type' in os_tag.attrib and os_tag.attrib['type'] == 'redhat6') or ('family' in os_tag.attrib and os_tag.attrib['family'] == 'redhat6'):
+    if ('type' in os_tag.attrib and os_tag.attrib['type'] == 'redhat6') or ('family' in os_tag.attrib and os_tag.attrib['family'] == 'redhat6') or ('type' in os_tag.attrib and os_tag.attrib['type'] == 'redhat7') or ('family' in os_tag.attrib and os_tag.attrib['family'] == 'redhat7'):
       for repo in os_tag.findall('.//repo'):
         for reponame in repo.findall('.//reponame'):
           if 'SCDF-1.0' in reponame.text:
