@@ -72,16 +72,6 @@ spring:
     driverClassName: org.h2.Driver
 {% endif %}
 
-{% if dataflow_transport %}
----
-spring:
-  cloud:
-    dataflow:
-      registry:
-        populator:
-          locations: classpath:{{dataflow_transport}}-applications.properties
-{% endif %}
-
 ---
 spring:
   hadoop:
