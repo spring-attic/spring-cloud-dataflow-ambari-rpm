@@ -38,6 +38,10 @@ pid_dir = status_params.pid_dir
 data_dir = status_params.data_dir
 java64_home = config['hostLevelParams']['java_home']
 jps_binary = format("{java64_home}/bin/jps")
+deployer_dir = config['configurations']['scdf-site']['deployer.yarn.app.baseDir'].strip()
+
+if len(deployer_dir)<1:
+  deployer_dir = "/dataflow"
 
 # scdf configs
 h2_port = config['configurations']['scdf-site']['h2.server.port']

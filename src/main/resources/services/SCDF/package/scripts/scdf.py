@@ -29,7 +29,7 @@ def scdf(name = None):
   import params
 
   if name == "server":
-    params.HdfsDirectory("/dataflow",
+    params.HdfsDirectory(params.deployer_dir,
                          action=params.action_create_delayed,
                          owner=params.scdf_user,
                          mode=0777

@@ -4,6 +4,12 @@
 <configuration supports_final="true">
 
   <property>
+    <name>deployer.yarn.app.baseDir</name>
+    <value>/dataflow</value>
+    <description>Base hdfs directory for artifacts and operations.</description>
+  </property>
+
+  <property>
     <name>spring.cloud.stream.kafka.binder.brokers</name>
     <value> </value>
     <description>A list of brokers to which the Kafka binder will connect.</description>
