@@ -5,8 +5,8 @@
   <services>
     <service>
       <name>SCDF</name>
-      <displayName>Spring Cloud Dataflow</displayName>
-      <comment>Spring Cloud Dataflow is a unified, distributed, and extensible system for data ingestion, real time analytics, batch processing, and data export.</comment>
+      <displayName>Spring Cloud Data Flow</displayName>
+      <comment>Spring Cloud Data Flow is a unified, distributed, and extensible system for data ingestion, real time analytics, batch processing, and data export.</comment>
       <version>1.0</version>
       <components>
 
