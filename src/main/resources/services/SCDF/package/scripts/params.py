@@ -40,7 +40,6 @@ java64_home = config['hostLevelParams']['java_home']
 jps_binary = format("{java64_home}/bin/jps")
 
 # scdf configs
-dataflow_transport = config['configurations']['scdf-site']['dataflow.transport'].strip()
 h2_port = config['configurations']['scdf-site']['h2.server.port']
 server_port = config['configurations']['scdf-site']['dataflow.server.port']
 spring_redis_port = config['configurations']['scdf-site']['spring.redis.port']
@@ -151,16 +150,12 @@ if len(spring_redis_host)>0:
 else:
   redis_installed = False
 
-# tweak actual binder settings
-# we default to kafka if its installed and transport is not set
-if len(spring_cloud_stream_kafka_binder_brokers)>0:
-  dataflow_transport = "kafka"
-elif len(dataflow_transport)<1 and kafka_installed:
-  dataflow_transport = "kafka"
+# use kafka from cluster if it's not overridden
+if kafka_installed and len(spring_cloud_stream_kafka_binder_brokers)<1:
   spring_cloud_stream_kafka_binder_brokers = kafka_broker_connect
-elif dataflow_transport == "kafka" and len(spring_cloud_stream_kafka_binder_brokers)<1 and kafka_installed:
-  spring_cloud_stream_kafka_binder_brokers = kafka_broker_connect
-elif len(spring_rabbitmq_addresses)>1:
+
+# we don't have rabbit in cluster so mark it installed if address is given
+if len(spring_rabbitmq_addresses)>1:
   rabbitmq_installed = True
 
 # kafka zk settings

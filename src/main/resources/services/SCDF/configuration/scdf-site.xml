@@ -4,12 +4,6 @@
 <configuration supports_final="true">
 
   <property>
-    <name>dataflow.transport</name>
-    <value> </value>
-    <description>Binder framework</description>
-  </property>
-
-  <property>
     <name>spring.cloud.stream.kafka.binder.brokers</name>
     <value> </value>
     <description>A list of brokers to which the Kafka binder will connect.</description>
