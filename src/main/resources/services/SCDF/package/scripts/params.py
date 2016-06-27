@@ -46,8 +46,6 @@ if len(deployer_dir)<1:
 # scdf configs
 h2_port = config['configurations']['scdf-site']['h2.server.port']
 server_port = config['configurations']['scdf-site']['dataflow.server.port']
-spring_redis_port = config['configurations']['scdf-site']['spring.redis.port']
-spring_redis_host = config['configurations']['scdf-site']['spring.redis.host'].strip()
 spring_cloud_stream_kafka_binder_brokers = config['configurations']['scdf-site']['spring.cloud.stream.kafka.binder.brokers'].strip()
 spring_cloud_stream_kafka_binder_zknodes = config['configurations']['scdf-site']['spring.cloud.stream.kafka.binder.zkNodes'].strip()
 spring_rabbitmq_addresses = config['configurations']['scdf-site']['spring.rabbitmq.addresses'].strip()
@@ -148,11 +146,6 @@ else:
   scdf_server_installed = False
 
 rabbitmq_installed = False
-
-if len(spring_redis_host)>0:
-  redis_installed = True
-else:
-  redis_installed = False
 
 # use kafka from cluster if it's not overridden
 if kafka_installed and len(spring_cloud_stream_kafka_binder_brokers)<1:

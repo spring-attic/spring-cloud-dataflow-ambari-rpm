@@ -28,18 +28,6 @@
   </property>
 
   <property>
-    <name>spring.redis.host</name>
-    <value> </value>
-    <description>Redis address hostname</description>
-  </property>
-
-  <property>
-    <name>spring.redis.port</name>
-    <value>6379</value>
-    <description>Redis address port</description>
-  </property>
-
-  <property>
     <name>dataflow.server.port</name>
     <value>9393</value>
     <description>SCDF Server port</description>

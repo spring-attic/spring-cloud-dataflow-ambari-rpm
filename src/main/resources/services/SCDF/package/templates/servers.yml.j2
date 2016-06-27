@@ -31,14 +31,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-{% if redis_installed %}
----
-spring:
-  redis:
-   port: {{spring_redis_port}}
-   host: {{spring_redis_host}}
-{% endif %}
-
 {% if rabbitmq_installed %}
 ---
 spring:
