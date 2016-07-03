@@ -39,4 +39,10 @@
     <description>HSQL server port</description>
   </property>
 
+  <property>
+    <name>maven.remoteRepositories.springRepo.url</name>
+    <value>https://repo.spring.io/libs-snapshot</value>
+    <description>Default springRepo maven repository.</description>
+  </property>
+
 </configuration>
