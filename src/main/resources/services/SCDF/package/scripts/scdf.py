@@ -94,3 +94,8 @@ def scdf(name = None):
     content=InlineTemplate(params.scdf_server_env_sh_template)
   )
 
+  File(format("{conf_dir}/scdf-shell-env.sh"),
+    owner=params.scdf_user,
+    content=InlineTemplate(params.scdf_shell_env_sh_template)
+  )
+

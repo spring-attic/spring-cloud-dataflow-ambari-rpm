@@ -64,6 +64,7 @@
       <configuration-dependencies>
         <config-type>scdf-site</config-type>
         <config-type>scdf-server-env</config-type>
+        <config-type>scdf-shell-env</config-type>
       </configuration-dependencies>
 
       <osSpecifics>

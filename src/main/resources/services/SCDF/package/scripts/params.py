@@ -59,6 +59,7 @@ else:
 
 # scdf env configs
 scdf_server_env_sh_template = config['configurations']['scdf-server-env']['content']
+scdf_shell_env_sh_template = config['configurations']['scdf-shell-env']['content']
 scdf_user = config['configurations']['scdf-server-env']['scdf_user']
 scdf_hdfs_user_dir = format("/user/{scdf_user}")
 
