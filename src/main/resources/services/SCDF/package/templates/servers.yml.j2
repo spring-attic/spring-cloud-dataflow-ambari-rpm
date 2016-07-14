@@ -65,6 +65,8 @@ spring:
 {% endif %}
 
 ---
+dataflow:
+  uri: {{scdf_shell_server_address}}
 spring:
   hadoop:
     fsUri: {{fs_defaultfs}}
