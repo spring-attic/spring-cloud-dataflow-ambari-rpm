@@ -1,0 +1,52 @@
+{
+  "services": [
+    {
+      "name": "SCDF",
+      "identities": [
+        {
+          "name": "scdf_identity",
+          "principal": {
+            "type": "user",
+            "value": "${scdf-server-env/scdf_user}/_HOST@${realm}"
+          },
+          "keytab": {
+            "file": "${keytab_dir}/scdf.service.keytab",
+            "owner": {
+              "access": "r",
+              "name": "scdf"
+            },
+            "group": {
+              "name": "${cluster-env/user_group}"
+            }
+          }
+        }
+      ],
+      "configurations": [
+        {
+          "scdf-site": {
+            "spring.hadoop.security.userPrincipal": "${scdf-server-env/scdf_user}/_HOST@${realm}",
+            "spring.hadoop.security.userKeytab": "${keytab_dir}/scdf.service.keytab"
+          }
+        }
+      ],
+      "components" : [
+        {
+          "name": "SCDFSERVER",
+          "identities": [
+            {
+              "name": "/SCDF/scdf_identity"
+            }
+          ]
+        },
+        {
+          "name": "SCDFSHELL",
+          "identities": [
+            {
+              "name": "/SCDF/scdf_identity"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
