@@ -49,6 +49,8 @@ server_port = config['configurations']['scdf-site']['dataflow.server.port']
 spring_cloud_stream_kafka_binder_brokers = config['configurations']['scdf-site']['spring.cloud.stream.kafka.binder.brokers'].strip()
 spring_cloud_stream_kafka_binder_zknodes = config['configurations']['scdf-site']['spring.cloud.stream.kafka.binder.zkNodes'].strip()
 spring_rabbitmq_addresses = config['configurations']['scdf-site']['spring.rabbitmq.addresses'].strip()
+spring_rabbitmq_username = config['configurations']['scdf-site']['spring.rabbitmq.username'].strip()
+spring_rabbitmq_password = config['configurations']['scdf-site']['spring.rabbitmq.password'].strip()
 
 if stack_name == 'phd':
   hadoop_distro = "phd30"

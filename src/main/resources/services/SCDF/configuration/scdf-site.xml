@@ -28,6 +28,21 @@
   </property>
 
   <property>
+    <name>spring.rabbitmq.username</name>
+    <value>guest</value>
+    <description>Rabbit MQ user</description>
+  </property>
+
+  <property>
+    <name>spring.rabbitmq.password</name>
+    <value>guest</value>
+    <description>Rabbit MQ password</description>
+    <value-attributes>
+      <type>password</type>
+    </value-attributes>
+  </property>
+
+  <property>
     <name>dataflow.server.port</name>
     <value>9393</value>
     <description>SCDF Server port</description>

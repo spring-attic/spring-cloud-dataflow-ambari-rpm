@@ -36,8 +36,8 @@
 spring:
   rabbitmq:
    addresses: {{spring_rabbitmq_addresses}}
-   username: guest
-   password: guest
+   username: {{spring_rabbitmq_username}}
+   password: {{spring_rabbitmq_password}}
    virtual_host: /
    useSSL: false
    sslProperties:
