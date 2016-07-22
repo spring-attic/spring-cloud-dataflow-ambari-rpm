@@ -77,10 +77,6 @@ spring:
     resourceManagerSchedulerAddress: {{yarn_rm_scheduler_address}}
     jobHistoryAddress: {{job_history_address}}
     yarnApplicationClasspath: {{yarn_app_classpath}}
-    config:
-      yarn.resourcemanager.scheduler.address: {{yarn_rm_scheduler_address}}
-      mapreduce.application.framework.path: /{{stack_name}}/apps/{{stack_version}}/mapreduce/mapreduce.tar.gz#mr-framework
-      mapreduce.application.classpath: {{mr_app_classpath}}
 {% endif %}
 {% if security_enabled %}
     security:
@@ -90,6 +86,19 @@ spring:
       namenodePrincipal: {{nn_principal_name}}
       rmManagerPrincipal: {{rm_principal_name}}
       jobHistoryPrincipal: {{jhs_principal_name}}
+{% endif %}
+    config:
+      yarn.resourcemanager.scheduler.address: {{yarn_rm_scheduler_address}}
+      mapreduce.application.framework.path: /{{stack_name}}/apps/{{stack_version}}/mapreduce/mapreduce.tar.gz#mr-framework
+      mapreduce.application.classpath: {{mr_app_classpath}}
+{% if dfs_ha_enabled %}
+      dfs.ha.automatic-failover.enabled: {{dfs_ha_automatic_failover_enabled}}
+      dfs.nameservices: {{dfs_ha_nameservices}}
+      dfs.client.failover.proxy.provider.{{dfs_ha_nameservices}}: org.apache.hadoop.hdfs.server.namenode.ha.ConfiguredFailoverProxyProvider
+      dfs.ha.namenodes.{{dfs_ha_nameservices}}: {{dfs_ha_namenode_ids}}
+{% for key, value in dfs_ha_map.iteritems() %}
+      dfs.namenode.rpc-address.{{dfs_ha_nameservices}}.{{key}}: {{value}}
+{% endfor %}
 {% endif %}
 
 ---

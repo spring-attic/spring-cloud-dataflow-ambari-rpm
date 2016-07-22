@@ -69,6 +69,7 @@ def scdf(name = None):
   File(format("{conf_dir}/servers.yml"),
        content=Template("servers.yml.j2",
                         extra_imports=[escape_yaml_property],
+                        dfs_ha_map = dfs_ha_map,
                         configurations = configurations),
        owner=params.scdf_user,
        group=params.user_group
