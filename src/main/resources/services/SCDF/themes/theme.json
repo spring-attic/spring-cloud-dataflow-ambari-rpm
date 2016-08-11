@@ -1,0 +1,247 @@
+{
+  "name": "default",
+  "description": "Default theme for SCDF service",
+  "configuration": {
+    "layouts": [
+      {
+        "name": "default",
+        "tabs": [
+          {
+            "name": "settings",
+            "display-name": "Settings",
+            "layout": {
+              "tab-columns": "2",
+              "tab-rows": "2",
+              "sections": [
+                {
+                  "name": "section-stream",
+                  "display-name": "Streams",
+                  "row-index": "0",
+                  "column-index": "0",
+                  "row-span": "1",
+                  "column-span": "1",
+                  "section-columns": "1",
+                  "section-rows": "1",
+                  "subsections": [
+                    {
+                      "name": "subsection-stream-col1",
+                      "display-name": "Stream AppMaster",
+                      "row-index": "0",
+                      "column-index": "0",
+                      "row-span": "1",
+                      "column-span": "1"
+                    },
+                    {
+                      "name": "subsection-stream-col2",
+                      "display-name": "Stream Container",
+                      "row-index": "0",
+                      "column-index": "1",
+                      "row-span": "1",
+                      "column-span": "1"
+                    }
+                  ]
+                },
+                {
+                  "name": "section-task",
+                  "display-name": "Tasks",
+                  "row-index": "1",
+                  "column-index": "0",
+                  "row-span": "1",
+                  "column-span": "1",
+                  "section-columns": "1",
+                  "section-rows": "1",
+                  "subsections": [
+                    {
+                      "name": "subsection-task-col1",
+                      "display-name": "Task AppMaster",
+                      "row-index": "0",
+                      "column-index": "0",
+                      "row-span": "1",
+                      "column-span": "1"
+                    },
+                    {
+                      "name": "subsection-task-col2",
+                      "display-name": "Task Container",
+                      "row-index": "0",
+                      "column-index": "1",
+                      "row-span": "1",
+                      "column-span": "1"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "placement": {
+      "configuration-layout": "default",
+      "configs": [
+        {
+          "config": "scdf-site/spring.cloud.deployer.yarn.app.streamappmaster.memory",
+          "subsection-name": "subsection-stream-col1"
+        },
+        {
+          "config": "scdf-site/spring.cloud.deployer.yarn.app.streamappmaster.virtualCores",
+          "subsection-name": "subsection-stream-col1"
+        },
+        {
+          "config": "scdf-site/spring.cloud.deployer.yarn.app.streamappmaster.javaOpts",
+          "subsection-name": "subsection-stream-col1"
+        },
+        {
+          "config": "scdf-site/spring.cloud.deployer.yarn.app.streamcontainer.memory",
+          "subsection-name": "subsection-stream-col2"
+        },
+        {
+          "config": "scdf-site/spring.cloud.deployer.yarn.app.streamcontainer.virtualCores",
+          "subsection-name": "subsection-stream-col2"
+        },
+        {
+          "config": "scdf-site/spring.cloud.deployer.yarn.app.streamcontainer.javaOpts",
+          "subsection-name": "subsection-stream-col2"
+        },
+        {
+          "config": "scdf-site/spring.cloud.deployer.yarn.app.taskappmaster.memory",
+          "subsection-name": "subsection-task-col1"
+        },
+        {
+          "config": "scdf-site/spring.cloud.deployer.yarn.app.taskappmaster.virtualCores",
+          "subsection-name": "subsection-task-col1"
+        },
+        {
+          "config": "scdf-site/spring.cloud.deployer.yarn.app.taskappmaster.javaOpts",
+          "subsection-name": "subsection-task-col1"
+        },
+        {
+          "config": "scdf-site/spring.cloud.deployer.yarn.app.taskcontainer.memory",
+          "subsection-name": "subsection-task-col2"
+        },
+        {
+          "config": "scdf-site/spring.cloud.deployer.yarn.app.taskcontainer.virtualCores",
+          "subsection-name": "subsection-task-col2"
+        },
+        {
+          "config": "scdf-site/spring.cloud.deployer.yarn.app.taskcontainer.javaOpts",
+          "subsection-name": "subsection-task-col2"
+        }
+      ]
+    },
+    "widgets": [
+      {
+        "config": "scdf-site/spring.cloud.deployer.yarn.app.streamappmaster.memory",
+        "widget": {
+          "type": "slider",
+          "units": [
+            {
+              "unit-name": "MB"
+            }
+          ]
+        }
+      },
+      {
+        "config": "scdf-site/spring.cloud.deployer.yarn.app.streamappmaster.virtualCores",
+        "widget": {
+          "type": "slider",
+          "units": [
+            {
+              "unit-name": "int"
+            }
+          ]
+        }
+      },
+      {
+        "config": "scdf-site/spring.cloud.deployer.yarn.app.streamappmaster.javaOpts",
+        "widget": {
+          "type": "text-field"
+        }
+      },
+      {
+        "config": "scdf-site/spring.cloud.deployer.yarn.app.streamcontainer.memory",
+        "widget": {
+          "type": "slider",
+          "units": [
+            {
+              "unit-name": "MB"
+            }
+          ]
+        }
+      },
+      {
+        "config": "scdf-site/spring.cloud.deployer.yarn.app.streamcontainer.virtualCores",
+        "widget": {
+          "type": "slider",
+          "units": [
+            {
+              "unit-name": "int"
+            }
+          ]
+        }
+      },
+      {
+        "config": "scdf-site/spring.cloud.deployer.yarn.app.streamcontainer.javaOpts",
+        "widget": {
+          "type": "text-field"
+        }
+      },
+      {
+        "config": "scdf-site/spring.cloud.deployer.yarn.app.taskappmaster.memory",
+        "widget": {
+          "type": "slider",
+          "units": [
+            {
+              "unit-name": "MB"
+            }
+          ]
+        }
+      },
+      {
+        "config": "scdf-site/spring.cloud.deployer.yarn.app.taskappmaster.virtualCores",
+        "widget": {
+          "type": "slider",
+          "units": [
+            {
+              "unit-name": "int"
+            }
+          ]
+        }
+      },
+      {
+        "config": "scdf-site/spring.cloud.deployer.yarn.app.taskappmaster.javaOpts",
+        "widget": {
+          "type": "text-field"
+        }
+      },
+      {
+        "config": "scdf-site/spring.cloud.deployer.yarn.app.taskcontainer.memory",
+        "widget": {
+          "type": "slider",
+          "units": [
+            {
+              "unit-name": "MB"
+            }
+          ]
+        }
+      },
+      {
+        "config": "scdf-site/spring.cloud.deployer.yarn.app.taskcontainer.virtualCores",
+        "widget": {
+          "type": "slider",
+          "units": [
+            {
+              "unit-name": "int"
+            }
+          ]
+        }
+      },
+      {
+        "config": "scdf-site/spring.cloud.deployer.yarn.app.taskcontainer.javaOpts",
+        "widget": {
+          "type": "text-field"
+        }
+      }
+    ]
+  }
+}
+

@@ -60,4 +60,128 @@
     <description>Default springRepo maven repository.</description>
   </property>
 
+  <property>
+    <name>spring.cloud.deployer.yarn.app.streamappmaster.memory</name>
+    <value>1073741824</value>
+    <description>Application master memory for streams</description>
+    <value-attributes>
+      <type>int</type>
+      <minimum>536870912</minimum>
+      <maximum>8589934592</maximum>
+      <unit>B</unit>
+      <increment-step>134217728</increment-step>
+    </value-attributes>
+  </property>
+
+  <property>
+    <name>spring.cloud.deployer.yarn.app.streamappmaster.virtualCores</name>
+    <value>1</value>
+    <description>Application master cpu for streams</description>
+    <value-attributes>
+      <type>int</type>
+      <minimum>1</minimum>
+      <maximum>8</maximum>
+      <increment-step>1</increment-step>
+    </value-attributes>
+  </property>
+
+  <property>
+    <name>spring.cloud.deployer.yarn.app.streamappmaster.javaOpts</name>
+    <value>-Xms512m -Xmx512m</value>
+    <description>Application master jvm opts for streams</description>
+  </property>
+
+  <property>
+    <name>spring.cloud.deployer.yarn.app.taskappmaster.memory</name>
+    <value>1073741824</value>
+    <description>Application master memory for tasks</description>
+    <value-attributes>
+      <type>int</type>
+      <minimum>536870912</minimum>
+      <maximum>8589934592</maximum>
+      <unit>B</unit>
+      <increment-step>134217728</increment-step>
+    </value-attributes>
+  </property>
+
+  <property>
+    <name>spring.cloud.deployer.yarn.app.taskappmaster.virtualCores</name>
+    <value>1</value>
+    <description>Application master cpu for tasks</description>
+    <value-attributes>
+      <type>int</type>
+      <minimum>1</minimum>
+      <maximum>8</maximum>
+      <increment-step>1</increment-step>
+    </value-attributes>
+  </property>
+
+  <property>
+    <name>spring.cloud.deployer.yarn.app.taskappmaster.javaOpts</name>
+    <value>-Xms512m -Xmx512m</value>
+    <description>Application master jvm opts for tasks</description>
+  </property>
+
+  <property>
+    <name>spring.cloud.deployer.yarn.app.streamcontainer.memory</name>
+    <value>1073741824</value>
+    <description>Container memory for streams</description>
+    <value-attributes>
+      <type>int</type>
+      <minimum>536870912</minimum>
+      <maximum>8589934592</maximum>
+      <unit>B</unit>
+      <increment-step>134217728</increment-step>
+    </value-attributes>
+  </property>
+
+  <property>
+    <name>spring.cloud.deployer.yarn.app.streamcontainer.virtualCores</name>
+    <value>1</value>
+    <description>Container cpu for streams</description>
+    <value-attributes>
+      <type>int</type>
+      <minimum>1</minimum>
+      <maximum>8</maximum>
+      <increment-step>1</increment-step>
+    </value-attributes>
+  </property>
+
+  <property>
+    <name>spring.cloud.deployer.yarn.app.streamcontainer.javaOpts</name>
+    <value>-Xms512m -Xmx512m</value>
+    <description>Container jvm opts for streams</description>
+  </property>
+
+  <property>
+    <name>spring.cloud.deployer.yarn.app.taskcontainer.memory</name>
+    <value>1073741824</value>
+    <description>Container memory for tasks</description>
+    <value-attributes>
+      <type>int</type>
+      <minimum>536870912</minimum>
+      <maximum>8589934592</maximum>
+      <unit>B</unit>
+      <increment-step>134217728</increment-step>
+    </value-attributes>
+  </property>
+
+  <property>
+    <name>spring.cloud.deployer.yarn.app.taskcontainer.virtualCores</name>
+    <value>1</value>
+    <description>Container cpu for tasks</description>
+    <value-attributes>
+      <type>int</type>
+      <minimum>1</minimum>
+      <maximum>8</maximum>
+      <increment-step>1</increment-step>
+    </value-attributes>
+  </property>
+
+  <property>
+    <name>spring.cloud.deployer.yarn.app.taskcontainer.javaOpts</name>
+    <value>-Xms512m -Xmx512m</value>
+    <description>Container jvm opts for tasks</description>
+  </property>
+
 </configuration>
