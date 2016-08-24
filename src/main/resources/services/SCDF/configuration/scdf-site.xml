@@ -62,14 +62,14 @@
 
   <property>
     <name>spring.cloud.deployer.yarn.app.streamappmaster.memory</name>
-    <value>1073741824</value>
+    <value>1024</value>
     <description>Application master memory for streams</description>
     <value-attributes>
       <type>int</type>
-      <minimum>536870912</minimum>
-      <maximum>8589934592</maximum>
-      <unit>B</unit>
-      <increment-step>134217728</increment-step>
+      <minimum>64</minimum>
+      <maximum>8192</maximum>
+      <unit>MB</unit>
+      <increment-step>64</increment-step>
     </value-attributes>
   </property>
 
@@ -93,14 +93,14 @@
 
   <property>
     <name>spring.cloud.deployer.yarn.app.taskappmaster.memory</name>
-    <value>1073741824</value>
+    <value>1024</value>
     <description>Application master memory for tasks</description>
     <value-attributes>
       <type>int</type>
-      <minimum>536870912</minimum>
-      <maximum>8589934592</maximum>
-      <unit>B</unit>
-      <increment-step>134217728</increment-step>
+      <minimum>64</minimum>
+      <maximum>8192</maximum>
+      <unit>MB</unit>
+      <increment-step>64</increment-step>
     </value-attributes>
   </property>
 
@@ -124,14 +124,14 @@
 
   <property>
     <name>spring.cloud.deployer.yarn.app.streamcontainer.memory</name>
-    <value>1073741824</value>
+    <value>1024</value>
     <description>Container memory for streams</description>
     <value-attributes>
       <type>int</type>
-      <minimum>536870912</minimum>
-      <maximum>8589934592</maximum>
-      <unit>B</unit>
-      <increment-step>134217728</increment-step>
+      <minimum>64</minimum>
+      <maximum>8192</maximum>
+      <unit>MB</unit>
+      <increment-step>64</increment-step>
     </value-attributes>
   </property>
 
@@ -155,14 +155,14 @@
 
   <property>
     <name>spring.cloud.deployer.yarn.app.taskcontainer.memory</name>
-    <value>1073741824</value>
+    <value>1024</value>
     <description>Container memory for tasks</description>
     <value-attributes>
       <type>int</type>
-      <minimum>536870912</minimum>
-      <maximum>8589934592</maximum>
-      <unit>B</unit>
-      <increment-step>134217728</increment-step>
+      <minimum>64</minimum>
+      <maximum>8192</maximum>
+      <unit>MB</unit>
+      <increment-step>64</increment-step>
     </value-attributes>
   </property>
 
