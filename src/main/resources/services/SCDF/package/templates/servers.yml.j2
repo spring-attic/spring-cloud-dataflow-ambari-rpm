@@ -52,6 +52,11 @@ spring:
         binder:
           brokers: {{spring_cloud_stream_kafka_binder_brokers}}
           zkNodes: {{spring_cloud_stream_kafka_binder_zknodes}}
+{% if security_enabled %}
+          configuration:
+            security:
+              protocol: SASL_PLAINTEXT
+{% endif %}
 {% endif %}
 
 {% if h2_installed %}

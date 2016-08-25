@@ -75,6 +75,13 @@ def scdf(name = None):
        group=params.user_group
   )
 
+  File(format("{conf_dir}/scdf_kafka_jaas.conf"),
+       content=Template("scdf_kafka_jaas.conf.j2",
+                        configurations = configurations),
+       owner=params.scdf_user,
+       group=params.user_group
+  )
+
   File(format("{conf_dir}/scdf-shell.init"),
        content=Template("scdf-shell.init.j2",
                         dfs_ha_map = dfs_ha_map),

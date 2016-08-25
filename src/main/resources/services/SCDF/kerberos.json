@@ -25,7 +25,8 @@
         {
           "scdf-site": {
             "spring.hadoop.security.userPrincipal": "${scdf-server-env/scdf_user}/_HOST@${realm}",
-            "spring.hadoop.security.userKeytab": "${keytab_dir}/scdf.service.keytab"
+            "spring.hadoop.security.userKeytab": "${keytab_dir}/scdf.service.keytab",
+            "spring.cloud.deployer.yarn.app.streamcontainer.saslConfig": "-Djava.security.auth.login.config=/etc/scdf/conf/scdf_kafka_jaas.conf"
           }
         }
       ],

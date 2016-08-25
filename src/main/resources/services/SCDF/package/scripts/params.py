@@ -192,6 +192,14 @@ if security_enabled:
   jhs_principal_name = config['configurations']['mapred-site']['mapreduce.jobhistory.principal']
   user_principal_name = config['configurations']['scdf-site']['spring.hadoop.security.userPrincipal']
   user_keytab = config['configurations']['scdf-site']['spring.hadoop.security.userKeytab']
+  scdf_kafka_keytab_path = user_keytab
+  _hostname_lowercase = config['hostname'].lower()
+  scdf_kafka_bare_jaas_principal = 'kafka'
+  scdf_kafka_jaas_principal = user_principal_name.replace('_HOST',_hostname_lowercase)
+else:
+  scdf_kafka_keytab_path = None
+  scdf_kafka_bare_jaas_principal = None
+  scdf_kafka_jaas_principal = None
 
 
 
