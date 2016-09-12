@@ -60,6 +60,15 @@ if os.path.exists('/var/lib/ambari-server/resources/stacks/HDP/2.4/role_command_
   json.dump(data, json_data, indent=2)
   json_data.close()
 
+if os.path.exists('/var/lib/ambari-server/resources/stacks/HDP/2.5/role_command_order.json'):
+  json_data=open('/var/lib/ambari-server/resources/stacks/HDP/2.5/role_command_order.json', 'r+')
+  data = json.load(json_data)
+  data['general_deps']['SCDF-INSTALL'] = ['HDFS-INSTALL']
+  data['general_deps']['SCDFSERVER-START'] = ['SCDFH2-START','ZOOKEEPER_SERVER-START','KAFKA_BROKER-START','NODEMANAGER-START','RESOURCEMANAGER-START']
+  json_data.seek(0)
+  json.dump(data, json_data, indent=2)
+  json_data.close()
+
 if os.path.exists('/var/lib/ambari-server/resources/stacks/PHD/3.0/repos/repoinfo.xml'):
   updateRepoWithScdf('/var/lib/ambari-server/resources/stacks/PHD/3.0/repos/repoinfo.xml')
 
@@ -71,6 +80,9 @@ if os.path.exists('/var/lib/ambari-server/resources/stacks/HDP/2.3/repos/repoinf
 
 if os.path.exists('/var/lib/ambari-server/resources/stacks/HDP/2.4/repos/repoinfo.xml'):
   updateRepoWithScdf('/var/lib/ambari-server/resources/stacks/HDP/2.4/repos/repoinfo.xml')
+
+if os.path.exists('/var/lib/ambari-server/resources/stacks/HDP/2.5/repos/repoinfo.xml'):
+  updateRepoWithScdf('/var/lib/ambari-server/resources/stacks/HDP/2.5/repos/repoinfo.xml')
 
 EOT
 

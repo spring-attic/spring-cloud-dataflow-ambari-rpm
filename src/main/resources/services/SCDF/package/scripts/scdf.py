@@ -21,6 +21,7 @@ Ambari Agent
 import os
 
 from resource_management import *
+from resource_management.core.exceptions import Fail
 from yaml_utils import escape_yaml_property
 import sys
 
@@ -41,18 +42,33 @@ def scdf(name = None):
     )
     params.HdfsDirectory(None, action=params.action_create)
 
-  Directory(params.log_dir,
-            owner=params.scdf_user,
-            group=params.user_group,
-            mode=0775,
-            recursive=True
-  )
+  try:
+    Directory(params.log_dir,
+              owner=params.scdf_user,
+              group=params.user_group,
+              mode=0775,
+              recursive=True
+    )
+  except Fail:
+    Directory(params.log_dir,
+              owner=params.scdf_user,
+              group=params.user_group,
+              mode=0775,
+              create_parents=True
+    )
 
-  Directory([params.pid_dir, params.data_dir, params.conf_dir],
-            owner=params.scdf_user,
-            group=params.user_group,
-            recursive=True
-  )
+  try:
+    Directory([params.pid_dir, params.data_dir, params.conf_dir],
+              owner=params.scdf_user,
+              group=params.user_group,
+              recursive=True
+    )
+  except Fail:
+    Directory([params.pid_dir, params.data_dir, params.conf_dir],
+              owner=params.scdf_user,
+              group=params.user_group,
+              create_parents=True
+    )
 
   dfs_ha_map = {}
   if params.dfs_ha_enabled:
