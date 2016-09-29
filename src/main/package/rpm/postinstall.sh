@@ -6,8 +6,8 @@ import xml.etree.ElementTree as ET
 from pprint import pprint
 
 def updateRepoWithScdf(repoinfoxml):
-  scdf_repo='SCDF-1.0'
-  scdf_repo_str = '<repo><baseurl>http://repo.spring.io/@springYumRepoId@/scdf/1.0</baseurl><repoid>' + scdf_repo + '</repoid><reponame>' + scdf_repo + '</reponame></repo>'
+  scdf_repo='SCDF-@version@'
+  scdf_repo_str = '<repo><baseurl>http://repo.spring.io/@springYumRepoId@/scdf/@version@</baseurl><repoid>' + scdf_repo + '</repoid><reponame>' + scdf_repo + '</reponame></repo>'
   is_scdfrepo_set = None
 
   tree = ET.parse(repoinfoxml)
@@ -16,7 +16,7 @@ def updateRepoWithScdf(repoinfoxml):
   for os_tag in root.findall('.//os'):
     if ('type' in os_tag.attrib and os_tag.attrib['type'] == 'redhat6') or ('family' in os_tag.attrib and os_tag.attrib['family'] == 'redhat6') or ('type' in os_tag.attrib and os_tag.attrib['type'] == 'redhat7') or ('family' in os_tag.attrib and os_tag.attrib['family'] == 'redhat7'):
       for reponame in os_tag.findall('.//reponame'):
-        if 'SCDF-1.0' in reponame.text:
+        if 'SCDF-@version@' in reponame.text:
           is_scdfrepo_set = True
       if is_scdfrepo_set is None:
         scdf_element = ET.fromstring(scdf_repo_str)

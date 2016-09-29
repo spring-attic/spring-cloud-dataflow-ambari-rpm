@@ -34,7 +34,8 @@ configure(subprojects) { subproject ->
 		from "${rootProject.projectDir}/src/main/package/rpm"
 		into "$buildDir/rpm-filtered"
 		filter ReplaceTokens, tokens: [
-			springYumRepoId: "${rootProject.springYumRepoId}".toString()
+			springYumRepoId: "${rootProject.springYumRepoId}".toString(),
+			version: "${rootProject.version}".toString()
 		]
 	}
 
