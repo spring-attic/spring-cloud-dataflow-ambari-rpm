@@ -68,6 +68,9 @@ project('hdp') {
 		packageName = 'scdf-plugin-hdp'
 		from("${rootProject.projectDir}/src/main/resources/services") {
 			into '/var/lib/ambari-server/resources/stacks/HDP/2.2/services'
+			filter ReplaceTokens, tokens: [
+				version: "${rootProject.version}".toString()
+			]
 		}
 	}
 }
@@ -77,6 +80,9 @@ project('phd') {
 		packageName = 'scdf-plugin-phd'
 		from("${rootProject.projectDir}/src/main/resources/services") {
 			into '/var/lib/ambari-server/resources/stacks/PHD/3.0/services'
+			filter ReplaceTokens, tokens: [
+				version: "${rootProject.version}".toString()
+			]
 		}
 	}
 }
