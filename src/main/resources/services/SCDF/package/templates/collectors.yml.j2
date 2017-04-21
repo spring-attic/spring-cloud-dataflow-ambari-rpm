@@ -59,66 +59,20 @@ spring:
 {% endif %}
 {% endif %}
 
-{% if h2_installed %}
 ---
-spring:
-  datasource:
-    url: jdbc:h2:tcp://{{h2_server}}:{{h2_port}}/dataflow
-    username: sa
-    password:
-    driverClassName: org.h2.Driver
-{% endif %}
-
-{% if collector_installed and collector_enabled %}
----
+server:
+  port: {{collector_port}}
+security:
+  basic:
+    enabled: false
 spring:
   cloud:
-    dataflow:
-      metrics:
-        collector:
-          uri: http://{{collector_server}}:{{collector_port}}
     stream:
       bindings:
-        applicationMetrics:
+        input:
           destination: {{collector_channel}}
-{% endif %}
----
-dataflow:
-  uri: {{scdf_shell_server_address}}
-spring:
-  hadoop:
-    fsUri: {{fs_defaultfs}}
-{% if yarn_installed %}
-    resourceManagerAddress: {{yarn_rm_address}}
-    resourceManagerHost: {{yarn_rm_address_host}}
-    resourceManagerPort: {{yarn_rm_address_port}}
-    resourceManagerSchedulerAddress: {{yarn_rm_scheduler_address}}
-    jobHistoryAddress: {{job_history_address}}
-    yarnApplicationClasspath: {{yarn_app_classpath}}
-{% endif %}
-{% if security_enabled %}
-    security:
-      userPrincipal: {{user_principal_name}}
-      userKeytab: {{user_keytab}}
-      authMethod: kerberos
-      namenodePrincipal: {{nn_principal_name}}
-      rmManagerPrincipal: {{rm_principal_name}}
-      jobHistoryPrincipal: {{jhs_principal_name}}
-{% endif %}
-    config:
-      yarn.resourcemanager.scheduler.address: {{yarn_rm_scheduler_address}}
-      mapreduce.application.framework.path: /{{stack_name}}/apps/{{stack_version}}/mapreduce/mapreduce.tar.gz#mr-framework
-      mapreduce.application.classpath: {{mr_app_classpath}}
-{% if dfs_ha_enabled %}
-      dfs.ha.automatic-failover.enabled: {{dfs_ha_automatic_failover_enabled}}
-      dfs.nameservices: {{dfs_ha_nameservices}}
-      dfs.client.failover.proxy.provider.{{dfs_ha_nameservices}}: org.apache.hadoop.hdfs.server.namenode.ha.ConfiguredFailoverProxyProvider
-      dfs.ha.namenodes.{{dfs_ha_nameservices}}: {{dfs_ha_namenode_ids}}
-{% for key, value in dfs_ha_map.iteritems() %}
-      dfs.namenode.rpc-address.{{dfs_ha_nameservices}}.{{key}}: {{value}}
-{% endfor %}
-{% endif %}
-
+      default:
+        contentType: application/json
 ---
 {% for key, value in configurations|dictsort if value|length > 1 %}
 {{key}} : {{ escape_yaml_property(value) }}

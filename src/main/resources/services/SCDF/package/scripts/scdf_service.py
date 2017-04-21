@@ -21,7 +21,7 @@ Ambari Agent
 
 from resource_management import *
 
-def scdf_service(action='none', name='none'):
+def scdf_service(action='none', name='none', binder='none'):
   import params
   import status_params
 
@@ -29,9 +29,11 @@ def scdf_service(action='none', name='none'):
   no_op_test = format("ls {pid_file} >/dev/null 2>&1 && ps `cat {pid_file}` >/dev/null 2>&1")
 
   if name == 'server':
-    process_grep = "grep spring-cloud-dataflow-server-yarn | grep -v spring-cloud-dataflow-server-yarn-h2"
+    process_grep = format("grep spring-cloud-dataflow-server-yarn | grep -v spring-cloud-dataflow-server-yarn-h2 | grep -v metrics-collector-{binder}")
   elif name == 'h2':
     process_grep = "grep spring-cloud-dataflow-server-yarn-h2"
+  elif name == 'collector':
+    process_grep = format("grep metrics-collector-{binder}")
 
   find_proc = format("{jps_binary} -l  | {process_grep}")
   write_pid = format("{find_proc} | awk {{'print $1'}} > {pid_file}")
@@ -42,6 +44,8 @@ def scdf_service(action='none', name='none'):
       process_cmd = format("source {conf_dir}/scdf-server-env.sh ; /opt/pivotal/dataflow/bin/dataflow-server-yarn > {log_dir}/server.out 2>&1")
     elif name == 'h2':
       process_cmd = format("source {conf_dir}/scdf-server-env.sh ; /opt/pivotal/dataflow/bin/dataflow-server-yarn-h2 --dataflow.database.h2.directory={data_dir} --dataflow.database.h2.port={h2_port} > {log_dir}/h2.out 2>&1")
+    elif name == 'collector':
+      process_cmd = format("source {conf_dir}/scdf-server-env.sh ; /opt/pivotal/dataflow/bin/dataflow-server-metrics-collector-{binder} > {log_dir}/collector.out 2>&1")
 
     Execute(process_cmd,
            user=params.scdf_user,

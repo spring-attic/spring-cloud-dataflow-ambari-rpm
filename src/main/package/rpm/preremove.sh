@@ -28,6 +28,8 @@ if os.path.exists('/var/lib/ambari-server/resources/stacks/PHD/3.0/role_command_
     data['general_deps'].pop('SCDF-INSTALL')
   if data['general_deps'].has_key('SCDFSERVER-START'):
     data['general_deps'].pop('SCDFSERVER-START')
+  if data['general_deps'].has_key('SCDFCOLLECTOR-START'):
+    data['general_deps'].pop('SCDFCOLLECTOR-START')
   json_data.seek(0)
   json_data.truncate()
   json.dump(data, json_data, indent=2)
@@ -40,6 +42,8 @@ if os.path.exists('/var/lib/ambari-server/resources/stacks/HDP/2.2/role_command_
     data['general_deps'].pop('SCDF-INSTALL')
   if data['general_deps'].has_key('SCDFSERVER-START'):
     data['general_deps'].pop('SCDFSERVER-START')
+  if data['general_deps'].has_key('SCDFCOLLECTOR-START'):
+    data['general_deps'].pop('SCDFCOLLECTOR-START')
   json_data.seek(0)
   json_data.truncate()
   json.dump(data, json_data, indent=2)
@@ -52,6 +56,8 @@ if os.path.exists('/var/lib/ambari-server/resources/stacks/HDP/2.3/role_command_
     data['general_deps'].pop('SCDF-INSTALL')
   if data['general_deps'].has_key('SCDFSERVER-START'):
     data['general_deps'].pop('SCDFSERVER-START')
+  if data['general_deps'].has_key('SCDFCOLLECTOR-START'):
+    data['general_deps'].pop('SCDFCOLLECTOR-START')
   json_data.seek(0)
   json_data.truncate()
   json.dump(data, json_data, indent=2)
@@ -64,6 +70,8 @@ if os.path.exists('/var/lib/ambari-server/resources/stacks/HDP/2.4/role_command_
     data['general_deps'].pop('SCDF-INSTALL')
   if data['general_deps'].has_key('SCDFSERVER-START'):
     data['general_deps'].pop('SCDFSERVER-START')
+  if data['general_deps'].has_key('SCDFCOLLECTOR-START'):
+    data['general_deps'].pop('SCDFCOLLECTOR-START')
   json_data.seek(0)
   json_data.truncate()
   json.dump(data, json_data, indent=2)
@@ -76,6 +84,8 @@ if os.path.exists('/var/lib/ambari-server/resources/stacks/HDP/2.5/role_command_
     data['general_deps'].pop('SCDF-INSTALL')
   if data['general_deps'].has_key('SCDFSERVER-START'):
     data['general_deps'].pop('SCDFSERVER-START')
+  if data['general_deps'].has_key('SCDFCOLLECTOR-START'):
+    data['general_deps'].pop('SCDFCOLLECTOR-START')
   json_data.seek(0)
   json_data.truncate()
   json.dump(data, json_data, indent=2)
@@ -88,6 +98,8 @@ if os.path.exists('/var/lib/ambari-server/resources/stacks/HDP/2.6/role_command_
     data['general_deps'].pop('SCDF-INSTALL')
   if data['general_deps'].has_key('SCDFSERVER-START'):
     data['general_deps'].pop('SCDFSERVER-START')
+  if data['general_deps'].has_key('SCDFCOLLECTOR-START'):
+    data['general_deps'].pop('SCDFCOLLECTOR-START')
   json_data.seek(0)
   json_data.truncate()
   json.dump(data, json_data, indent=2)

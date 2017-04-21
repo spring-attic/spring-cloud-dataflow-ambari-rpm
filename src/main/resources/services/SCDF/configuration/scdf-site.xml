@@ -55,6 +55,67 @@
   </property>
 
   <property>
+    <name>metrics.collector.enabled</name>
+    <value>true</value>
+    <description>
+      Enable metrics collector for server and stream applications.
+    </description>
+    <display-name>Metrics Collector</display-name>
+    <value-attributes>
+      <type>value-list</type>
+      <entries>
+        <entry>
+          <value>true</value>
+          <label>Enabled</label>
+        </entry>
+        <entry>
+          <value>false</value>
+          <label>Disabled</label>
+        </entry>
+      </entries>
+      <selection-cardinality>1</selection-cardinality>
+    </value-attributes>
+  </property>
+
+  <property>
+    <name>metrics.collector.channel</name>
+    <value>metrics</value>
+    <display-name>Metrics collector channel name</display-name>
+    <description>Metrics collector channel name</description>
+  </property>
+
+  <property>
+    <name>metrics.collector.server.port</name>
+    <value>18080</value>
+    <display-name>Metrics collector server port</display-name>
+    <description>Metrics collector server port</description>
+  </property>
+
+  <property>
+    <name>metrics.collector.binder</name>
+    <value>kafka-10</value>
+    <description>
+      Binder type for metric collector. One of rabbit, kafka-09 or kafka-10.
+    </description>
+    <display-name>Metric Collector Binder type</display-name>
+    <value-attributes>
+      <type>value-list</type>
+      <entries>
+        <entry>
+          <value>rabbit</value>
+        </entry>
+        <entry>
+          <value>kafka-10</value>
+        </entry>
+        <entry>
+          <value>kafka-09</value>
+        </entry>
+      </entries>
+      <selection-cardinality>1</selection-cardinality>
+    </value-attributes>
+  </property>
+
+  <property>
     <name>maven.remoteRepositories.springRepo.url</name>
     <value>https://repo.spring.io/libs-snapshot</value>
     <description>Default springRepo maven repository.</description>

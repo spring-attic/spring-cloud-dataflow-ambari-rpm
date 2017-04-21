@@ -91,6 +91,15 @@ def scdf(name = None):
        group=params.user_group
   )
 
+  File(format("{conf_dir}/collectors.yml"),
+       content=Template("collectors.yml.j2",
+                        extra_imports=[escape_yaml_property],
+                        dfs_ha_map = dfs_ha_map,
+                        configurations = configurations),
+       owner=params.scdf_user,
+       group=params.user_group
+  )
+
   File(format("{conf_dir}/scdf_kafka_jaas.conf"),
        content=Template("scdf_kafka_jaas.conf.j2",
                         configurations = configurations),

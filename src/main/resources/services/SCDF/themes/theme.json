@@ -14,9 +14,53 @@
               "tab-rows": "2",
               "sections": [
                 {
+                  "name": "section-collector",
+                  "display-name": "Metrics Collector",
+                  "row-index": "0",
+                  "column-index": "0",
+                  "row-span": "1",
+                  "column-span": "1",
+                  "section-columns": "1",
+                  "section-rows": "1",
+                  "subsections": [
+                    {
+                      "name": "subsection-collector-col1",
+                      "display-name": "",
+                      "row-index": "0",
+                      "column-index": "0",
+                      "row-span": "1",
+                      "column-span": "1"
+                    },
+                    {
+                      "name": "subsection-collector-col2",
+                      "display-name": "",
+                      "row-index": "0",
+                      "column-index": "0",
+                      "row-span": "1",
+                      "column-span": "1"
+                    },
+                    {
+                      "name": "subsection-collector-col3",
+                      "display-name": "",
+                      "row-index": "0",
+                      "column-index": "0",
+                      "row-span": "1",
+                      "column-span": "1"
+                    },
+                    {
+                      "name": "subsection-collector-col4",
+                      "display-name": "",
+                      "row-index": "0",
+                      "column-index": "0",
+                      "row-span": "1",
+                      "column-span": "1"
+                    }
+                  ]
+                },
+                {
                   "name": "section-stream",
                   "display-name": "Streams",
-                  "row-index": "0",
+                  "row-index": "1",
                   "column-index": "0",
                   "row-span": "1",
                   "column-span": "1",
@@ -44,7 +88,7 @@
                 {
                   "name": "section-task",
                   "display-name": "Tasks",
-                  "row-index": "1",
+                  "row-index": "2",
                   "column-index": "0",
                   "row-span": "1",
                   "column-span": "1",
@@ -125,6 +169,22 @@
         {
           "config": "scdf-site/spring.cloud.deployer.yarn.app.taskcontainer.javaOpts",
           "subsection-name": "subsection-task-col2"
+        },
+        {
+          "config": "scdf-site/metrics.collector.enabled",
+          "subsection-name": "subsection-collector-col1"
+        },
+        {
+          "config": "scdf-site/metrics.collector.binder",
+          "subsection-name": "subsection-collector-col2"
+        },
+        {
+          "config": "scdf-site/metrics.collector.server.port",
+          "subsection-name": "subsection-collector-col3"
+        },
+        {
+          "config": "scdf-site/metrics.collector.channel",
+          "subsection-name": "subsection-collector-col4"
         }
       ]
     },
@@ -237,6 +297,35 @@
       },
       {
         "config": "scdf-site/spring.cloud.deployer.yarn.app.taskcontainer.javaOpts",
+        "widget": {
+          "type": "text-field"
+        }
+      },
+      {
+        "config": "scdf-site/metrics.collector.enabled",
+        "widget": {
+          "type": "toggle"
+        }
+      },
+      {
+        "config": "scdf-site/metrics.collector.binder",
+        "widget": {
+          "type": "combo"
+        }
+      },
+      {
+        "config": "scdf-site/metrics.collector.server.port",
+        "widget": {
+          "type": "text-field",
+          "units": [
+            {
+              "unit-name": "int"
+            }
+          ]
+        }
+      },
+      {
+        "config": "scdf-site/metrics.collector.channel",
         "widget": {
           "type": "text-field"
         }

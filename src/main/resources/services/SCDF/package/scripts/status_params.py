@@ -24,4 +24,5 @@ config = Script.get_config()
 pid_dir = config['configurations']['scdf-server-env']['scdf_pid_dir']
 server_pid_file = format("{pid_dir}/scdf_server.pid")
 h2_pid_file = format("{pid_dir}/scdf_h2.pid")
+collector_pid_file = format("{pid_dir}/scdf_collector.pid")
 data_dir = config['configurations']['scdf-server-env']['scdf_data_dir']

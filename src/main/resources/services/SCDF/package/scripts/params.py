@@ -51,6 +51,11 @@ spring_cloud_stream_kafka_binder_zknodes = config['configurations']['scdf-site']
 spring_rabbitmq_addresses = config['configurations']['scdf-site']['spring.rabbitmq.addresses'].strip()
 spring_rabbitmq_username = config['configurations']['scdf-site']['spring.rabbitmq.username'].strip()
 spring_rabbitmq_password = config['configurations']['scdf-site']['spring.rabbitmq.password'].strip()
+_collector_enabled = config['configurations']['scdf-site']['metrics.collector.enabled']
+collector_enabled = not is_empty(_collector_enabled) and _collector_enabled
+collector_port = config['configurations']['scdf-site']['metrics.collector.server.port']
+collector_binder = config['configurations']['scdf-site']['metrics.collector.binder']
+collector_channel = config['configurations']['scdf-site']['metrics.collector.channel']
 
 if stack_name == 'phd':
   hadoop_distro = "phd30"
@@ -140,6 +145,13 @@ if 'scdfh2_hosts' in config['clusterHostInfo'] and \
   h2_server = config['clusterHostInfo']['scdfh2_hosts'][0]
 else:
   h2_installed = False
+
+if 'scdfcollector_hosts' in config['clusterHostInfo'] and \
+    len(config['clusterHostInfo']['scdfcollector_hosts'])>0:
+  collector_installed = True
+  collector_server = config['clusterHostInfo']['scdfcollector_hosts'][0]
+else:
+  collector_installed = False
 
 if 'scdfserver_hosts' in config['clusterHostInfo'] and \
     len(config['clusterHostInfo']['scdfserver_hosts'])>0:

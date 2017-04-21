@@ -25,7 +25,7 @@ from resource_management import *
 from scdf import scdf
 from scdf_service import scdf_service
 
-class ScdfServer(Script):
+class ScdfCollector(Script):
 
   def install(self, env):
     self.install_packages(env)
@@ -33,23 +33,23 @@ class ScdfServer(Script):
   def configure(self, env):
     import params
     env.set_params(params)
-    scdf(name='server')
+    scdf(name='collector')
 
   def start(self, env):
     import params
     env.set_params(params)
     self.configure(env)
-    scdf_service(action = 'start', name = 'server', binder = params.collector_binder)
+    scdf_service(action = 'start', name = 'collector', binder = params.collector_binder)
 
   def stop(self, env):
     import params
     env.set_params(params)
-    scdf_service(action = 'stop', name = 'server', binder = params.collector_binder)
+    scdf_service(action = 'stop', name = 'collector', binder = params.collector_binder)
 
   def status(self, env):
     import status_params
     env.set_params(status_params)
-    check_process_status(status_params.server_pid_file)
+    check_process_status(status_params.collector_pid_file)
 
 if __name__ == "__main__":
-  ScdfServer().execute()
+  ScdfCollector().execute()

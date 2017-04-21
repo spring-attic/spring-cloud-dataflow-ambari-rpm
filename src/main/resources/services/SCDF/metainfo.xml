@@ -61,6 +61,18 @@
           </commandScript>
         </component>
 
+        <component>
+          <name>SCDFCOLLECTOR</name>
+          <displayName>SCDF Metrics Collector</displayName>
+          <category>MASTER</category>
+          <cardinality>0+</cardinality>
+          <commandScript>
+            <script>scripts/scdf_collector.py</script>
+            <scriptType>PYTHON</scriptType>
+            <timeout>600</timeout>
+          </commandScript>
+        </component>
+
       </components>
 
       <requiredServices>
